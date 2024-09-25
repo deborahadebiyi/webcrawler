@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { getHtmlUrls } = require('../src/get-html-urls')
+const { getHtmlLinks } = require('../src/get-html-urls')
 
 describe('getHtmlUrls', () => {
     beforeEach(() => {
@@ -21,11 +21,8 @@ describe('getHtmlUrls', () => {
     })
     it('should return an array of urls', () => {
         const url = 'http://monzino.com'
-        const actual = getHtmlUrls(url)
+        const actual = getHtmlLinks(url)
         const expected = [url, 'http://monzino.com/page2', 'http://monzino.com/welcome', 'https:monzilla.com' ]
         expect(actual).toEqual(expected)
     })
-    // it('should make relative urls into absolute urls', () => {
-        
-    // })
 })

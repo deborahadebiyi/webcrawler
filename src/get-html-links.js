@@ -1,9 +1,7 @@
 const { JSDOM } = require('jsdom')
 
-const getHtmlUrls = (url, htmlInnerBody) => {
-    const urls = []
-
-    urls.push(url)
+const getHtmlLinks = (url, htmlInnerBody) => {
+    const urls = [url]
 
     const dom = new JSDOM(htmlInnerBody)
     const links = dom.window.document.getElementsByTagName('a')
@@ -19,5 +17,5 @@ const getHtmlUrls = (url, htmlInnerBody) => {
 }
 
 module.exports = {
-    getHtmlUrls
+    getHtmlLinks
 }

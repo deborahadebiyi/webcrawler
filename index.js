@@ -1,37 +1,61 @@
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const { checkValidUrl } = require('./src/check-valid-url')
-const { standardiseUrl } = require('./src/standardise-url')
+const { fetchInnerHtml } = require('./src/fetch-inner-html')
+const { getHtmlLinks } = require('./src/get-html-links')
 
-let crawledArray = []
-let standardisedUrl
+const webCrawler = async (url) => {
 
-const webCrawler = (url) => {
+  try {
+    
+    let visitedPages = {}
+    let domainLinks = []
+    
+    const validUrl = checkValidUrl(url)
+    const innerHtml = await fetchInnerHtml(validUrl)
+    const links = getHtmlLinks(validUrl, innerHtml)
 
-  const validUrl = checkValidUrl(url)
-  console.log(validUrl)
+    visitedPages[validUrl] = links.slice(1)
 
-  // if (validUrl !== undefined) {
-  //   standardisedUrl = standardiseUrl(standardiseUrl)
-  //   console.log(standardiseUrl)
-  // }
+    for (const link of links) {
+      if (link.includes(validUrl)) {
+        domainLinks.push(link)
+      }
+    }
+    
+        for (const currentLink of domainLinks) {
+      const isValid = checkValidUrl(currentLink); // Check if the link is valid
 
-  // if (validUrl !== undefined) {
-  //   standardisedUrl = standardiseUrl(standardiseUrl)
-  //   return standardisedUrl
+      if (isValid && !visitedPages[currentLink]) { // Proceed only if valid and not visited
+        // Fetch inner HTML of the valid link
+        const html = await fetchInnerHtml(currentLink);
 
-  // } else {
-  //   console.error("Provided url is invalid")
-  //   process.exit = 1
-  // }
+         if (!html) {
+            console.log(`Skipping ${currentLink} due to 404 or missing HTML.`);
+            continue;
+          }
 
-  // crawledArray.push([standardisedUrl])
+        // Get the links from the current page's HTML
+        const pageLinks = getHtmlLinks(currentLink, html);
+
+        // Add current link and its associated links to the visitedPages object
+        visitedPages[currentLink] = pageLinks;
+
+        // Optionally, add more valid domain links to the crawling list if necessary:
+        domainLinks.push(...pageLinks.filter(link => link.includes(validUrl)));
+      }
+    }
+
+    console.log("Crawled Pages:", visitedPages);
+    return visitedPages;
 
 
 
-
-  
+  } catch(error) {
+    console.log('Error completing operation', error)
+  }
 }
 
-console.log(webCrawler('https://monzo.com/*'))
+console.log(webCrawler('https://monzo.com'))
 
 module.exports = {
   webCrawler
