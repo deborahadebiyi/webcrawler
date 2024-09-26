@@ -1,0 +1,30 @@
+
+
+call given url and get all links 
+push as array with given url being [0]
+
+for urlArr[i]
+fetch and get all links
+push as array with urlArr[i] being the key
+
+do for all urlArr 
+
+
+then create object
+
+with returned object 
+- take second key's values and repeat the process
+
+to avoid duplicates 
+- make an array of all keys (visitedUrls)
+
+if url matches one of the keys in visitedUrls, skip so as to not duplicates
+
+
+repeat process when you get another array with arr[0] being the fetched url and all elements after being the links
+- once complete add array to object  
+- arr[0] is the key and everything else is the value.
+
+How to stop ?
+
+- after all entries 
