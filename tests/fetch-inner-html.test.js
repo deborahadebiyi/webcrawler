@@ -1,2 +1,2 @@
-//FIX TESTS
-const { fetchInnerHtml } = require('../src/fetch-inner-html')
+// //FIX TESTS
+// const { fetchInnerHtml } = require('../src/fetch-inner-html')

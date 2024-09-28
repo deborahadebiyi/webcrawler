@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { getHtmlLinks } = require('../src/get-html-urls')
+const { getHtmlLinks } = require('../src/get-html-links')
 
 describe('getHtmlUrls', () => {
     beforeEach(() => {

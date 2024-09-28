@@ -1,6 +1,6 @@
 
 
-call given url and get all links 
+1. call given url and get all links 
 push as array with given url being [0]
 
 for urlArr[i]

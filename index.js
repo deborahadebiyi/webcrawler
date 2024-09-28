@@ -1,12 +1,12 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-const { getDomainLinks } = require('./get-domain-links')
+const { getDomainLinks } = require('./src/get-domain-links')
 
 
 const webCrawler = async (url) => {
 
   try {
 
-    const visitedPages = {}
+    const visitedPages = {} //empty object to pus url and associated links
     const pageLinks = await getDomainLinks(url)
 
     visitedPages[pageLinks.validUrl] = pageLinks.links.slice(1)
@@ -31,7 +31,7 @@ const webCrawler = async (url) => {
 }
 
 // console.log(webCrawler('https://monzo.com'))
-console.log(webCrawler('https://boot.dev'))
+// console.log(webCrawler('https://boot.dev'))
 
 
 
