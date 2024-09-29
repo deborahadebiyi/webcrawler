@@ -4,10 +4,14 @@ const fetchInnerHtml = async (url) => {
     try {
         const response = await fetch(url)
 
+        // if (response.status > 399) {
+        //     console.log(`Failed to fetch ${url}, status code: ${response.status}`)
+        //     return
+        // }
+
         if (response.status > 399) {
-            console.log(`Failed to fetch ${url}, status code: ${response.status}`)
             return
-        }
+        }        
 
         const text = await response.text()
         const dom = new JSDOM(text)
@@ -16,7 +20,7 @@ const fetchInnerHtml = async (url) => {
         return innerHtml
         
     } catch (error) {
-        console.log('Error fetching the page', error)
+        return
     }
 }
 

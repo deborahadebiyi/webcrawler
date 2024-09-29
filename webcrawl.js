@@ -21,24 +21,51 @@ const crawlWeb = async(url) => {
         allDomainLinks.push(domainLinks)
         allPageLinks.push(links)
         visitedUrls.push(links[0])
+        visitedPages[links[0]] = links.slice(1)
         
 
 
         // 2.
         for(let i=0; i < allDomainLinks.length; i++){
-            for (let j=1; j < allDomainLinks[i].length ; j++ ){
+            for (let j = 1; j < allDomainLinks[i].length; j++){
+                //console.log('HALPP',allDomainLinks[i][j])
+                if (!visitedUrls.includes(allDomainLinks[i][j])) {
+                    let resHtml = await fetchInnerHtml(allDomainLinks[i][j])
+                    let resLinks = getHtmlLinks(allDomainLinks[i][j], resHtml)
+                    let resDomainLinks = getDomainLinks(allDomainLinks[i][j], resLinks)
+
+                    visitedUrls.push(allDomainLinks[i][j])
+                    allDomainLinks.push(resDomainLinks)
+                    allPageLinks.push(resLinks)
+
+                    //STRETCH GOAL
+                    //if failed to fetch, push to failedFetch array with the url of the page it was on
+                    //as the first element. Created failed object, can be used to clean up broken links
+  
+                }
+
+                // if (allDomainLinks[i][j].length === 1) {
+                //     visitedPages[allDomainLinks[i][j]] = allDomainLinks[i][j]
+                // } else {
+                //     visitedPages[allDomainLinks[i][j]] = resLinks.slice(1)
+                // }  
 
             }
+            console.log(visitedPages)
+            //console.log(visitedUrls)
+            // console.log(allDomainLinks)
+            // console.log(allPageLinks)
         }
 
-
-
+        // console.log(visitedPages)
+        // console.log(allPageLinks)
+        // return visitedPages
 
     } catch(error){
         console.log('Error completing operation', error)
     }
 }
 
-console.log(crawlWeb('https://boot.dev'))
+console.log(crawlWeb('https://monzo.com'))
 
 module.exports = { crawlWeb }

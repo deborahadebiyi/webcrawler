@@ -3,14 +3,14 @@
 1. call given url and get all links 
 push as array with given url being [0]
 
-for urlArr[i]
+2. for urlArr[i]
 fetch and get all links
 push as array with urlArr[i] being the key
 
 do for all urlArr 
 
 
-then create object
+3. then create object
 
 with returned object 
 - take second key's values and repeat the process
