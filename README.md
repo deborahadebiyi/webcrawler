@@ -12,7 +12,3 @@ Deborah Adebiyi's take home test submission
 
 The unit tests are written using jest, use the following command to run:
 `npm run test`
-
-## Stretch goals
-
-If failed to fetch, create failed object, can be used to clean up broken links.

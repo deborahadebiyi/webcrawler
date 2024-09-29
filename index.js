@@ -29,7 +29,13 @@ const crawlWeb = async (url, concurrencyLimit = 5) => {
                         queue.push(...resDomainLinks)
                     }
                 } catch (error) {
-                    // Ignore 404s and other errors, continue crawling
+                    /**
+                     * Ignores 404s and other errors, so it continue crawling. A stretch goal would be to
+                     * initialise a failed object and add urls that failed to fetch which could then
+                     * be used to identify and clean up broken links.
+                     */
+                    
+
                 }
             }
         }
