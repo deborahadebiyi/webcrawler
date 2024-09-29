@@ -1,12 +1,10 @@
-//MAYBE REMOVE
 const { standardiseUrl } = require('../src/standardise-url')
 
 describe('standardiseUrl', () => {
     it('should throw an error if arg is not a url', () => {
         const input = 'not an array'
-        const actual = standardiseUrl(input)
-        expect(actual).toThrow(TypeError)
-        expect(actual).toThrow('Expected an array as input')
+        expect(() => standardiseUrl(input)).toThrow(TypeError)
+        expect(() => standardiseUrl(input)).toThrow('Expected an array as input')
     })
     it('should standardise the given array', () => {
         const givenArr = [

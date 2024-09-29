@@ -4,11 +4,6 @@ const fetchInnerHtml = async (url) => {
     try {
         const response = await fetch(url)
 
-        // if (response.status > 399) {
-        //     console.log(`Failed to fetch ${url}, status code: ${response.status}`)
-        //     return
-        // }
-
         if (response.status > 399) {
             return
         }        
@@ -24,4 +19,4 @@ const fetchInnerHtml = async (url) => {
     }
 }
 
-module.exports = { fetchInnerHtml}
+module.exports = { fetchInnerHtml }

@@ -8,8 +8,6 @@ const checkValidUrl = (url) => {
     }
 }
 
-// console.log(checkValidUrl('http://hello.com'))
-
 module.exports = {
     checkValidUrl
 }

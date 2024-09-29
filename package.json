@@ -12,7 +12,8 @@
   "dependencies": {
     "jest": "^29.7.0",
     "jsdom": "^25.0.0",
-    "node-html-parser": "^6.1.13"
+    "node-html-parser": "^6.1.13",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "jest-environment-jsdom": "^29.7.0"

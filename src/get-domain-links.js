@@ -22,15 +22,6 @@ const getDomainLinks = (baseUrl, linksArray) => {
     }
 }
 
-// console.log(getDomainLinks('https://test.dev', [
-//     'https://www.test.dev/u/gerep',
-//     'https://test.dev/signup-flow',
-//     'https://test.dev/reviews',
-//     'https://blog.boot.dev/backend/how-long-to-become-backend-dev/',
-//     'https://survey.test.co/2024/work',
-//     'https://test.dev/signup-flow',
-// ]))
-
 module.exports = {
     getDomainLinks
 }
