@@ -15,4 +15,4 @@ The unit tests are written using jest, use the following command to run:
 
 ## Stretch goals
 
-If failed to fetch, create failed object, can be used to clean up broken links
+If failed to fetch, create failed object, can be used to clean up broken links.
