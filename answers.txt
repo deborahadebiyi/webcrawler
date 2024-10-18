@@ -1,9 +1,0 @@
-Implementation 
-
-WHY DID YOU ORGANISE THE CODE THIS WAY
-- The src folder includes all the functions that are used in the main webcrawl function
-- I separated the functionality so that I was writing pure functions that performed only one operation
-* makes it easier to write unit tests 
-
-WHAT WOULD YOU IMPROVE 
-- Error handling 
